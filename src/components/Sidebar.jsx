@@ -51,14 +51,16 @@ const Sidebar = ({ isAuthenticated, onSignOut, isMobile, isOpen, onClose }) => {
           />
         )}
         <Link className="navbar-brand px-4 py-3 m-0" to="/dashboard" onClick={handleLinkClick}>
-          <div className="d-flex align-items-center justify-content-center">
+          <div className="d-flex align-items-center justify-content-center" style={{ overflow: 'visible' }}>
             <img 
               src="/img/logo-escotel.png" 
               alt="ESCOTEL" 
               style={{
                 height: isMobile ? '120px' : '40px',
                 maxWidth: '100%',
-                objectFit: 'contain'
+                objectFit: 'contain',
+                transform: isMobile ? 'scale(6)' : 'scale(1)',
+                transformOrigin: 'center'
               }}
             />
           </div>
