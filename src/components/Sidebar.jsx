@@ -5,12 +5,12 @@ const Sidebar = ({ isAuthenticated, onSignOut, isMobile, isOpen, onClose }) => {
 
   const menuItems = [
     { path: '/dashboard', name: 'Dashboard', icon: 'dashboard' },
-    { path: '/opcion1', name: 'Opción 1', icon: 'analytics' },
-    { path: '/opcion2', name: 'Opción 2', icon: 'bar_chart' },
-    { path: '/opcion3', name: 'Opción 3', icon: 'trending_up' },
-    { path: '/opcion4', name: 'Opción 4', icon: 'show_chart' },
-    { path: '/opcion5', name: 'Opción 5', icon: 'insert_chart' },
-    { path: '/opcion6', name: 'Opción 6', icon: 'assessment' },
+    { path: '/opcion1', name: 'Opción 1', icon: 'point_of_sale' },
+    { path: '/opcion2', name: 'Opción 2', icon: 'inventory' },
+    { path: '/opcion3', name: 'Opción 3', icon: 'groups' },
+    { path: '/opcion4', name: 'Opción 4', icon: 'account_balance' },
+    { path: '/opcion5', name: 'Opción 5', icon: 'settings' },
+    { path: '/opcion6', name: 'Opción 6', icon: 'campaign' },
   ];
 
   const isActive = (path) => location.pathname === path;
