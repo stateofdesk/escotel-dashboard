@@ -69,17 +69,17 @@ const OptionPage = ({ optionNumber }) => {
     <div className="container-fluid py-4 px-3">
       <div className="card h-100 shadow-lg" style={{ borderRadius: '16px', minHeight: 'calc(100vh - 120px)' }}>
         <div className="card-header pb-3 pt-4 px-4" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0' }}>
-          <div className="row align-items-center">
-            <div className="col-md-6">
+          <div className="row">
+            <div className="col-md-6 col-12">
               <h4 className="mb-1">{currentOption.title}</h4>
-              <p className="text-sm mb-0">
+              <p className="text-sm mb-2 mb-md-0">
                 <i className="fa fa-calendar text-info" aria-hidden="true"></i>
                 <span className="font-weight-bold ms-1">Vista por semana</span>
               </p>
             </div>
-            <div className="col-md-6 text-end">
+            <div className="col-md-6 col-12 d-flex justify-content-md-end justify-content-start align-items-end">
               <select 
-                className="form-select form-select-sm d-inline-block"
+                className="form-select form-select-sm"
                 value={selectedMonth}
                 onChange={(e) => setSelectedMonth(parseInt(e.target.value))}
                 style={{
