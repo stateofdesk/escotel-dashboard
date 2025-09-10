@@ -66,116 +66,52 @@ const OptionPage = ({ optionNumber }) => {
   const currentOption = optionDescriptions[optionNumber] || optionDescriptions[1];
 
   return (
-    <div className="container-fluid py-4">
-      <div className="row">
-        <div className="col-12">
-          <div className="card my-4">
-            <div className="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-              <div className="bg-gradient-dark shadow-dark border-radius-lg pt-4 pb-3">
-                <h6 className="text-white text-capitalize ps-3">{currentOption.title}</h6>
-              </div>
+    <div className="container-fluid py-4 px-3">
+      <div className="card h-100 shadow-lg" style={{ borderRadius: '16px', minHeight: 'calc(100vh - 120px)' }}>
+        <div className="card-header pb-3 pt-4 px-4" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0' }}>
+          <div className="row align-items-center">
+            <div className="col-md-6">
+              <h4 className="mb-1">{currentOption.title}</h4>
+              <p className="text-sm mb-0">
+                <i className="fa fa-calendar text-info" aria-hidden="true"></i>
+                <span className="font-weight-bold ms-1">Vista por semana</span>
+              </p>
             </div>
-            <div className="card-body px-0 pb-2">
-              <div className="px-4">
-                <div className="row mb-4">
-                  <div className="col-12">
-                    <div className="card">
-                      <div className="card-header pb-0">
-                        <div className="row">
-                          <div className="col-md-8">
-                            <h6>Gráfico Mensual</h6>
-                            <p className="text-sm mb-0">
-                              <i className="fa fa-calendar text-info" aria-hidden="true"></i>
-                              <span className="font-weight-bold ms-1">Vista por semana</span>
-                            </p>
-                          </div>
-                          <div className="col-md-4">
-                            <select 
-                              className="form-select form-select-sm"
-                              value={selectedMonth}
-                              onChange={(e) => setSelectedMonth(parseInt(e.target.value))}
-                              style={{
-                                fontSize: '0.875rem',
-                                padding: '0.375rem 0.75rem'
-                              }}
-                            >
-                              {months.map((month, index) => (
-                                <option key={index} value={index}>
-                                  {month}
-                                </option>
-                              ))}
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="card-body">
-                        <BarChart 
-                          data={{
-                            labels: monthlyData.labels,
-                            values: chartData.values
-                          }}
-                          title={chartData.title}
-                          height={400}
-                          type="monthly"
-                          color={optionColor}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Métricas comentadas temporalmente
-                <div className="row">
-                  <div className="col-lg-4 col-md-6 col-12">
-                    <div className="card">
-                      <div className="card-header mx-4 p-3 text-center">
-                        <div className="icon icon-shape icon-lg bg-gradient-dark shadow text-center border-radius-lg">
-                          <i className="material-symbols-rounded opacity-10">trending_up</i>
-                        </div>
-                      </div>
-                      <div className="card-body pt-0 p-3 text-center">
-                        <h6 className="text-center mb-0">Crecimiento</h6>
-                        <span className="text-xs">+24%</span>
-                        <hr className="horizontal dark my-3" />
-                        <h5 className="mb-0">+12.5%</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-md-6 col-12">
-                    <div className="card">
-                      <div className="card-header mx-4 p-3 text-center">
-                        <div className="icon icon-shape icon-lg bg-gradient-dark shadow text-center border-radius-lg">
-                          <i className="material-symbols-rounded opacity-10">analytics</i>
-                        </div>
-                      </div>
-                      <div className="card-body pt-0 p-3 text-center">
-                        <h6 className="text-center mb-0">Eficiencia</h6>
-                        <span className="text-xs">Promedio</span>
-                        <hr className="horizontal dark my-3" />
-                        <h5 className="mb-0">87.3%</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-md-6 col-12">
-                    <div className="card">
-                      <div className="card-header mx-4 p-3 text-center">
-                        <div className="icon icon-shape icon-lg bg-gradient-dark shadow text-center border-radius-lg">
-                          <i className="material-symbols-rounded opacity-10">assessment</i>
-                        </div>
-                      </div>
-                      <div className="card-body pt-0 p-3 text-center">
-                        <h6 className="text-center mb-0">Rendimiento</h6>
-                        <span className="text-xs">Objetivo</span>
-                        <hr className="horizontal dark my-3" />
-                        <h5 className="mb-0">94.2%</h5>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                */}
-              </div>
+            <div className="col-md-6 text-end">
+              <select 
+                className="form-select form-select-sm d-inline-block"
+                value={selectedMonth}
+                onChange={(e) => setSelectedMonth(parseInt(e.target.value))}
+                style={{
+                  fontSize: '0.875rem',
+                  padding: '0.5rem 2.5rem 0.5rem 1rem',
+                  borderRadius: '12px',
+                  width: 'auto',
+                  minWidth: '150px',
+                  maxWidth: '220px',
+                  border: '1px solid #dee2e6'
+                }}
+              >
+                {months.map((month, index) => (
+                  <option key={index} value={index}>
+                    {month}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
+        </div>
+        <div className="card-body p-4" style={{ height: 'calc(100vh - 200px)', overflow: 'hidden' }}>
+          <BarChart 
+            data={{
+              labels: monthlyData.labels,
+              values: chartData.values
+            }}
+            title={chartData.title}
+            height={window.innerHeight - 240}
+            type="monthly"
+            color={optionColor}
+          />
         </div>
       </div>
     </div>
