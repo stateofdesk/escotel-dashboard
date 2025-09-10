@@ -1,22 +1,33 @@
 import BarChart from '../components/BarChart';
+import { useState } from 'react';
 
 const OptionPage = ({ optionNumber }) => {
   const colors = ['primary', 'success', 'info', 'warning', 'danger', 'dark'];
   const optionColor = colors[(optionNumber - 1) % colors.length];
+  
+  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
+  
+  const months = [
+    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+  ];
+  
   const monthlyData = {
-    labels: [
-      'Sem 1', 'Sem 2', 'Sem 3', 'Sem 4', 'Sem 5', 'Sem 6', 
-      'Sem 7', 'Sem 8', 'Sem 9', 'Sem 10', 'Sem 11', 'Sem 12'
-    ],
+    labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
   };
 
-  const generateRandomData = () => {
-    return Array.from({ length: 12 }, () => Math.floor(Math.random() * 100) + 20);
+  const generateRandomData = (month) => {
+    // Usar el mes como seed para datos consistentes
+    const seed = month + optionNumber;
+    return Array.from({ length: 4 }, (_, i) => {
+      const base = (seed * 7 + i * 13) % 80;
+      return base + 20;
+    });
   };
 
   const chartData = {
-    title: `Opción ${optionNumber} - Vista Mensual`,
-    values: generateRandomData(),
+    title: `${months[selectedMonth]} 2024`,
+    values: generateRandomData(selectedMonth),
   };
 
   const optionDescriptions = {
@@ -66,19 +77,36 @@ const OptionPage = ({ optionNumber }) => {
             </div>
             <div className="card-body px-0 pb-2">
               <div className="px-4">
-                <p className="text-sm text-secondary mb-4">
-                  {currentOption.description}
-                </p>
-                
                 <div className="row mb-4">
-                  <div className="col-lg-8">
+                  <div className="col-12">
                     <div className="card">
                       <div className="card-header pb-0">
-                        <h6>Gráfico Mensual</h6>
-                        <p className="text-sm mb-0">
-                          <i className="fa fa-arrow-up text-success" aria-hidden="true"></i>
-                          <span className="font-weight-bold ms-1">Datos del mes actual</span>
-                        </p>
+                        <div className="row">
+                          <div className="col-md-8">
+                            <h6>Gráfico Mensual</h6>
+                            <p className="text-sm mb-0">
+                              <i className="fa fa-calendar text-info" aria-hidden="true"></i>
+                              <span className="font-weight-bold ms-1">Vista por semanas</span>
+                            </p>
+                          </div>
+                          <div className="col-md-4">
+                            <select 
+                              className="form-select form-select-sm"
+                              value={selectedMonth}
+                              onChange={(e) => setSelectedMonth(parseInt(e.target.value))}
+                              style={{
+                                fontSize: '0.875rem',
+                                padding: '0.375rem 0.75rem'
+                              }}
+                            >
+                              {months.map((month, index) => (
+                                <option key={index} value={index}>
+                                  {month}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+                        </div>
                       </div>
                       <div className="card-body">
                         <BarChart 
@@ -91,29 +119,6 @@ const OptionPage = ({ optionNumber }) => {
                           type="monthly"
                           color={optionColor}
                         />
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="col-lg-4">
-                    <div className="card h-100">
-                      <div className="card-header pb-0">
-                        <h6>Características</h6>
-                      </div>
-                      <div className="card-body">
-                        <ul className="list-group">
-                          {currentOption.features.map((feature, index) => (
-                            <li key={index} className="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                              <div className="d-flex flex-column">
-                                <h6 className="mb-1 text-dark text-sm">{feature}</h6>
-                                <span className="text-xs">Función disponible</span>
-                              </div>
-                              <div className="ms-auto text-end">
-                                <i className="material-symbols-rounded text-success">check_circle</i>
-                              </div>
-                            </li>
-                          ))}
-                        </ul>
                       </div>
                     </div>
                   </div>

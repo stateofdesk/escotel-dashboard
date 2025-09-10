@@ -41,7 +41,7 @@ const Sidebar = ({ isAuthenticated, onSignOut, isMobile, isOpen, onClose }) => {
   } : {};
 
   return (
-    <aside className={sidebarClasses} style={sidebarStyle} id="sidenav-main">
+    <aside className={sidebarClasses} style={{...sidebarStyle, overflow: 'hidden'}} id="sidenav-main">
       <div className="sidenav-header">
         {isMobile && (
           <i 
@@ -60,8 +60,8 @@ const Sidebar = ({ isAuthenticated, onSignOut, isMobile, isOpen, onClose }) => {
         </Link>
       </div>
       <hr className="horizontal dark mt-0 mb-2" />
-      <div className="collapse navbar-collapse w-auto show" id="sidenav-collapse-main">
-        <ul className="navbar-nav">
+      <div className="collapse navbar-collapse w-auto show" id="sidenav-collapse-main" style={{overflow: 'hidden'}}>
+        <ul className="navbar-nav" style={{overflow: 'hidden'}}>
           {menuItems.map((item) => (
             <li key={item.path} className="nav-item">
               <Link 

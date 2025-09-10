@@ -34,67 +34,6 @@ const Dashboard = () => {
 
   return (
     <div className="container-fluid py-4">
-      <div className="row">
-        <div className="col-12">
-          <div className="row mb-4">
-            <div className="col-lg-8 col-md-6 mb-md-0 mb-4">
-              <div className="card">
-                <div className="card-header pb-0">
-                  <div className="row">
-                    <div className="col-lg-6 col-7">
-                      <h6>Dashboard ESCOTEL</h6>
-                      <p className="text-sm mb-0">
-                        <i className="fa fa-check text-info" aria-hidden="true"></i>
-                        <span className="font-weight-bold ms-1">Vista semanal</span> de todas las opciones
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="card-body px-0 pb-2">
-                  <div className="table-responsive">
-                    <p className="text-xs text-secondary mb-3 px-3">
-                      Resumen de todas las opciones con datos de la semana actual
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="card h-100">
-                <div className="card-header pb-0">
-                  <h6>Información</h6>
-                  <p className="text-sm">
-                    <i className="fa fa-arrow-up text-success" aria-hidden="true"></i>
-                    <span className="font-weight-bold">+24%</span> esta semana
-                  </p>
-                </div>
-                <div className="card-body p-3">
-                  <div className="timeline timeline-one-side">
-                    <div className="timeline-block mb-3">
-                      <span className="timeline-step">
-                        <i className="material-symbols-rounded text-success text-gradient">notifications</i>
-                      </span>
-                      <div className="timeline-content">
-                        <h6 className="text-dark text-sm font-weight-bold mb-0">6 Opciones Activas</h6>
-                        <p className="text-secondary font-weight-bold text-xs mt-1 mb-0">Todas funcionando correctamente</p>
-                      </div>
-                    </div>
-                    <div className="timeline-block mb-3">
-                      <span className="timeline-step">
-                        <i className="material-symbols-rounded text-warning text-gradient">code</i>
-                      </span>
-                      <div className="timeline-content">
-                        <h6 className="text-dark text-sm font-weight-bold mb-0">Sistema ESCOTEL</h6>
-                        <p className="text-secondary font-weight-bold text-xs mt-1 mb-0">Dashboard integrado</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <div className="row">
         {chartData.map((data, index) => {
