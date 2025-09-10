@@ -48,7 +48,7 @@ const Dashboard = () => {
                     <div className="col-12">
                       <h5 className="mb-1">{data.title}</h5>
                       <p className="text-sm mb-0">
-                        <i className="fa fa-check text-info" aria-hidden="true"></i>
+                        <i className="fa fa-check" aria-hidden="true" style={{ color: '#8B0000' }}></i>
                         <span className="font-weight-bold ms-1">Vista por día</span>
                       </p>
                     </div>

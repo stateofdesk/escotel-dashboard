@@ -73,7 +73,7 @@ const OptionPage = ({ optionNumber }) => {
             <div className="col-md-6 col-12">
               <h4 className="mb-1">{currentOption.title}</h4>
               <p className="text-sm mb-2 mb-md-0">
-                <i className="fa fa-calendar text-info" aria-hidden="true"></i>
+                <i className="fa fa-calendar" aria-hidden="true" style={{ color: '#8B0000' }}></i>
                 <span className="font-weight-bold ms-1">Vista por semana</span>
               </p>
             </div>
