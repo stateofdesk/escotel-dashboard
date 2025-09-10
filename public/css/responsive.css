@@ -1,0 +1,158 @@
+/* Responsive adjustments for mobile devices */
+
+@media (max-width: 768px) {
+  /* Hide sidebar on mobile by default */
+  .sidenav {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .sidenav.show {
+    transform: translateX(0);
+  }
+  
+  /* Adjust main content margin on mobile */
+  .main-content {
+    margin-left: 0 !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Stack cards vertically on mobile */
+  .dashboard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Adjust chart containers for mobile */
+  .chart-container {
+    min-height: 250px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Mobile navbar adjustments */
+  .navbar-brand {
+    font-size: 1rem !important;
+  }
+  
+  .navbar-brand img {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  
+  /* Card adjustments for mobile */
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  .card-header h6 {
+    font-size: 0.9rem;
+  }
+  
+  /* Form adjustments for sign-in page */
+  .page-header {
+    padding: 2rem 0 !important;
+  }
+  
+  .card-body {
+    padding: 1.5rem !important;
+  }
+  
+  /* Button adjustments */
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Extra small devices */
+  .container-fluid {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  
+  .card-header {
+    padding: 1rem !important;
+  }
+  
+  .card-body {
+    padding: 1rem !important;
+  }
+  
+  /* Smaller text on extra small screens */
+  .text-sm {
+    font-size: 0.75rem !important;
+  }
+  
+  .text-xs {
+    font-size: 0.65rem !important;
+  }
+}
+
+/* Desktop specific adjustments */
+@media (min-width: 769px) {
+  .main-content {
+    margin-left: 17rem;
+    transition: margin-left 0.3s ease;
+  }
+  
+  .sidenav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 17rem;
+    z-index: 1000;
+  }
+}
+
+/* Sidebar toggle button for mobile */
+.sidebar-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1001;
+  background: #344767;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 769px) {
+  .sidebar-toggle {
+    display: none;
+  }
+}
+
+/* Chart responsive adjustments */
+@media (max-width: 768px) {
+  .chart-container canvas {
+    max-height: 200px !important;
+  }
+}
+
+/* Grid adjustments for dashboard */
+@media (max-width: 992px) {
+  .dashboard-grid .col-lg-6 {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Navigation text adjustments */
+@media (max-width: 768px) {
+  .nav-link-text {
+    font-size: 0.9rem;
+  }
+  
+  .material-symbols-rounded {
+    font-size: 1.2rem !important;
+  }
+}
