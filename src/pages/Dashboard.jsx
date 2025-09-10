@@ -42,11 +42,11 @@ const Dashboard = () => {
           
           return (
             <div key={index} className="col-lg-6 col-md-6 mb-4">
-              <div className="card">
-                <div className="card-header pb-0">
-                  <div className="row">
+              <div className="card shadow-lg" style={{ borderRadius: '16px' }}>
+                <div className="card-header pb-3 pt-4 px-4" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0' }}>
+                  <div className="row align-items-center">
                     <div className="col-12">
-                      <h6>{data.title}</h6>
+                      <h5 className="mb-1">{data.title}</h5>
                       <p className="text-sm mb-0">
                         <i className="fa fa-check text-info" aria-hidden="true"></i>
                         <span className="font-weight-bold ms-1">Vista por día</span>
@@ -54,19 +54,17 @@ const Dashboard = () => {
                     </div>
                   </div>
                 </div>
-                <div className="card-body px-0 pb-2">
-                  <div className="px-3">
-                    <BarChart 
-                      data={{
-                        labels: weeklyData.labels,
-                        values: data.values
-                      }}
-                      title=""
-                      height={250}
-                      type="weekly"
-                      color={chartColor}
-                    />
-                  </div>
+                <div className="card-body p-4">
+                  <BarChart 
+                    data={{
+                      labels: weeklyData.labels,
+                      values: data.values
+                    }}
+                    title=""
+                    height={250}
+                    type="weekly"
+                    color={chartColor}
+                  />
                 </div>
               </div>
             </div>
