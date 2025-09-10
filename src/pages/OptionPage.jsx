@@ -1,6 +1,8 @@
 import BarChart from '../components/BarChart';
 
 const OptionPage = ({ optionNumber }) => {
+  const colors = ['primary', 'success', 'info', 'warning', 'danger', 'dark'];
+  const optionColor = colors[(optionNumber - 1) % colors.length];
   const monthlyData = {
     labels: [
       'Sem 1', 'Sem 2', 'Sem 3', 'Sem 4', 'Sem 5', 'Sem 6', 
@@ -87,6 +89,7 @@ const OptionPage = ({ optionNumber }) => {
                           title={chartData.title}
                           height={400}
                           type="monthly"
+                          color={optionColor}
                         />
                       </div>
                     </div>
@@ -116,6 +119,7 @@ const OptionPage = ({ optionNumber }) => {
                   </div>
                 </div>
 
+                {/* Métricas comentadas temporalmente
                 <div className="row">
                   <div className="col-lg-4 col-md-6 col-12">
                     <div className="card">
@@ -163,6 +167,7 @@ const OptionPage = ({ optionNumber }) => {
                     </div>
                   </div>
                 </div>
+                */}
               </div>
             </div>
           </div>

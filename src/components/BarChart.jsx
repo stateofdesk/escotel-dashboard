@@ -18,15 +18,26 @@ ChartJS.register(
   Legend
 );
 
-const BarChart = ({ data, title, height = 300, type = "monthly" }) => {
+const BarChart = ({ data, title, height = 300, type = "monthly", color = "success" }) => {
+  const colorPalette = {
+    primary: { bg: 'rgba(233, 30, 99, 0.8)', border: 'rgba(233, 30, 99, 1)' },
+    success: { bg: 'rgba(76, 175, 80, 0.8)', border: 'rgba(76, 175, 80, 1)' },
+    info: { bg: 'rgba(26, 115, 232, 0.8)', border: 'rgba(26, 115, 232, 1)' },
+    warning: { bg: 'rgba(251, 140, 0, 0.8)', border: 'rgba(251, 140, 0, 1)' },
+    danger: { bg: 'rgba(244, 67, 53, 0.8)', border: 'rgba(244, 67, 53, 1)' },
+    dark: { bg: 'rgba(38, 38, 38, 0.8)', border: 'rgba(38, 38, 38, 1)' }
+  };
+
+  const selectedColor = colorPalette[color] || colorPalette.success;
+
   const chartData = {
     labels: data.labels,
     datasets: [
       {
         label: title,
         data: data.values,
-        backgroundColor: 'rgba(76, 175, 80, 0.8)',
-        borderColor: 'rgba(76, 175, 80, 1)',
+        backgroundColor: selectedColor.bg,
+        borderColor: selectedColor.border,
         borderWidth: 1,
         borderRadius: 6,
         borderSkipped: false,

@@ -97,43 +97,42 @@ const Dashboard = () => {
       </div>
 
       <div className="row">
-        {chartData.map((data, index) => (
-          <div key={index} className="col-lg-6 col-md-6 mb-4">
-            <div className="card">
-              <div className="card-header pb-0">
-                <div className="row">
-                  <div className="col-lg-6 col-7">
-                    <h6>{data.title}</h6>
-                    <p className="text-sm mb-0">
-                      <i className="fa fa-check text-info" aria-hidden="true"></i>
-                      <span className="font-weight-bold ms-1">Datos semanales</span>
-                    </p>
-                  </div>
-                  <div className="col-lg-6 col-5 my-auto text-end">
-                    <div className="dropdown float-lg-end pe-4">
-                      <a className="cursor-pointer" id={`dropdownTable${index}`} data-bs-toggle="dropdown" aria-expanded="false">
-                        <i className="fa fa-ellipsis-v text-secondary" aria-hidden="true"></i>
-                      </a>
+        {chartData.map((data, index) => {
+          const colors = ['primary', 'success', 'info', 'warning', 'danger', 'dark'];
+          const chartColor = colors[index % colors.length];
+          
+          return (
+            <div key={index} className="col-lg-6 col-md-6 mb-4">
+              <div className="card">
+                <div className="card-header pb-0">
+                  <div className="row">
+                    <div className="col-12">
+                      <h6>{data.title}</h6>
+                      <p className="text-sm mb-0">
+                        <i className="fa fa-check text-info" aria-hidden="true"></i>
+                        <span className="font-weight-bold ms-1">Datos semanales</span>
+                      </p>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="card-body px-0 pb-2">
-                <div className="px-3">
-                  <BarChart 
-                    data={{
-                      labels: weeklyData.labels,
-                      values: data.values
-                    }}
-                    title=""
-                    height={250}
-                    type="weekly"
-                  />
+                <div className="card-body px-0 pb-2">
+                  <div className="px-3">
+                    <BarChart 
+                      data={{
+                        labels: weeklyData.labels,
+                        values: data.values
+                      }}
+                      title=""
+                      height={250}
+                      type="weekly"
+                      color={chartColor}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

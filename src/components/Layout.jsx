@@ -34,7 +34,27 @@ const Layout = () => {
   return (
     <div className={`g-sidenav-show bg-gray-100 ${isAuthenticated ? '' : 'd-flex align-items-center min-vh-100'}`}>
       {isAuthenticated && isMobile && (
-        <button className="sidebar-toggle" onClick={toggleSidebar}>
+        <button 
+          className="sidebar-toggle" 
+          onClick={toggleSidebar}
+          style={{
+            position: 'fixed',
+            top: '1rem',
+            right: '1rem',
+            zIndex: 1001,
+            background: 'linear-gradient(195deg, #42424a, #191919)',
+            color: 'white',
+            border: 'none',
+            borderRadius: '50%',
+            width: '3rem',
+            height: '3rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
+            cursor: 'pointer'
+          }}
+        >
           <i className="material-symbols-rounded">menu</i>
         </button>
       )}

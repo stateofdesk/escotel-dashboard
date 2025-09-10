@@ -25,83 +25,38 @@
     <link rel="stylesheet" href="/css/nucleo-svg.css" />
     
     <!-- Material Dashboard CSS -->
-    <link rel="stylesheet" href="/css/material-dashboard.css" />
+    <link id="pagestyle" href="/css/material-dashboard.css?v=3.2.0" rel="stylesheet" />
     
     <!-- Custom Responsive CSS -->
     <link rel="stylesheet" href="/css/responsive.css" />
     
-    <!-- Custom CSS for additional fixes -->
+    <!-- CSS específico para Sign In -->
     <style>
-      /* Ensure proper layout */
-      .g-sidenav-show .main-content {
-        transition: margin-left 0.3s ease;
+      /* Para que funcione igual que el original */
+      .page-header {
+        background-size: cover !important;
+        background-position: center !important;
       }
       
-      @media (min-width: 769px) {
-        .g-sidenav-show .main-content {
-          margin-left: 17rem;
-        }
-      }
-      
-      @media (max-width: 768px) {
-        .g-sidenav-show .main-content {
-          margin-left: 0;
-        }
-      }
-      
-      /* Fix chart containers */
-      .chart-container {
-        position: relative;
-        width: 100%;
-        min-height: 300px;
-      }
-      
-      /* Ensure sidebar is properly positioned */
-      .sidenav {
-        box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
-      }
-      
-      /* Fix for mobile sidebar */
+      /* Mobile sidebar fixes */
       @media (max-width: 768px) {
         .sidenav {
           position: fixed !important;
-          top: 0;
-          left: 0;
-          height: 100vh;
-          width: 280px;
-          z-index: 1000;
           transform: translateX(-100%);
           transition: transform 0.3s ease;
         }
-        
         .sidenav.show {
           transform: translateX(0);
         }
-      }
-      
-      /* Sidebar toggle button */
-      .sidebar-toggle {
-        position: fixed;
-        top: 1rem;
-        left: 1rem;
-        z-index: 1001;
-        background: #344767;
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 3rem;
-        height: 3rem;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-      }
-      
-      
-      @media (max-width: 768px) {
+        
+        /* Botón hamburguesa en lado derecho */
         .sidebar-toggle {
-          display: flex;
+          position: fixed !important;
+          top: 1rem !important;
+          right: 1rem !important;
+          left: auto !important;
+          background: linear-gradient(195deg, #42424a, #191919) !important;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
         }
       }
     </style>
@@ -123,6 +78,9 @@
     
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.min.js"></script>
+    
+    <!-- Material Dashboard Core JS -->
+    <script src="/js/material-dashboard.min.js?v=3.2.0"></script>
     
     <!-- React App -->
     <script type="module" src="/src/main.jsx"></script>
