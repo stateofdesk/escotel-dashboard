@@ -26,7 +26,7 @@ const OptionPage = ({ optionNumber }) => {
   };
 
   const chartData = {
-    title: `${months[selectedMonth]} 2024`,
+    title: `${months[selectedMonth]} 2025`,
     values: generateRandomData(selectedMonth),
   };
 
@@ -86,7 +86,7 @@ const OptionPage = ({ optionNumber }) => {
                             <h6>Gráfico Mensual</h6>
                             <p className="text-sm mb-0">
                               <i className="fa fa-calendar text-info" aria-hidden="true"></i>
-                              <span className="font-weight-bold ms-1">Vista por semanas</span>
+                              <span className="font-weight-bold ms-1">Vista por semana</span>
                             </p>
                           </div>
                           <div className="col-md-4">

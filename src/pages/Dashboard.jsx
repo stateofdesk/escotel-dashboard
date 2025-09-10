@@ -7,27 +7,27 @@ const Dashboard = () => {
 
   const chartData = [
     {
-      title: 'Opción 1 - Vista Semanal',
+      title: 'Análisis de Ventas',
       values: [65, 78, 82, 55, 90, 45, 88],
     },
     {
-      title: 'Opción 2 - Vista Semanal',
+      title: 'Gestión de Inventario',
       values: [45, 62, 75, 88, 72, 95, 68],
     },
     {
-      title: 'Opción 3 - Vista Semanal',
+      title: 'Análisis de Clientes',
       values: [78, 85, 92, 67, 84, 76, 89],
     },
     {
-      title: 'Opción 4 - Vista Semanal',
+      title: 'Control Financiero',
       values: [56, 73, 68, 91, 77, 83, 65],
     },
     {
-      title: 'Opción 5 - Vista Semanal',
+      title: 'Productividad Operativa',
       values: [82, 69, 77, 85, 74, 92, 81],
     },
     {
-      title: 'Opción 6 - Vista Semanal',
+      title: 'Marketing Digital',
       values: [71, 88, 79, 94, 66, 87, 75],
     },
   ];
@@ -49,7 +49,7 @@ const Dashboard = () => {
                       <h6>{data.title}</h6>
                       <p className="text-sm mb-0">
                         <i className="fa fa-check text-info" aria-hidden="true"></i>
-                        <span className="font-weight-bold ms-1">Datos semanales</span>
+                        <span className="font-weight-bold ms-1">Vista por día</span>
                       </p>
                     </div>
                   </div>

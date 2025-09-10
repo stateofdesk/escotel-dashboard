@@ -37,34 +37,21 @@ const SignIn = ({ onSignIn }) => {
           marginBottom: '2rem'
         }}>
           <div style={{
-            width: '60px',
-            height: '60px',
-            background: 'linear-gradient(195deg, #42424a, #191919)',
-            borderRadius: '50%',
+            margin: '0 auto 1rem',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            margin: '0 auto 1rem',
-            color: 'white',
-            fontSize: '20px'
+            justifyContent: 'center'
           }}>
-            <i className="material-symbols-rounded">business</i>
+            <img 
+              src="/img/logo-escotel.png" 
+              alt="ESCOTEL" 
+              style={{
+                height: '60px',
+                maxWidth: '100%',
+                objectFit: 'contain'
+              }}
+            />
           </div>
-          <h2 style={{
-            margin: '0 0 0.5rem',
-            color: '#344767',
-            fontSize: '24px',
-            fontWeight: '600'
-          }}>
-            ESCOTEL
-          </h2>
-          <p style={{
-            margin: 0,
-            color: '#666',
-            fontSize: '14px'
-          }}>
-            Sistema de Gestión Empresarial
-          </p>
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -183,7 +170,7 @@ const SignIn = ({ onSignIn }) => {
           fontSize: '12px',
           color: '#999'
         }}>
-          © 2024 ESCOTEL. Todos los derechos reservados.
+          © 2025 ESCOTEL. Todos los derechos reservados.
         </div>
       </div>
     </div>

@@ -5,12 +5,12 @@ const Sidebar = ({ isAuthenticated, onSignOut, isMobile, isOpen, onClose }) => {
 
   const menuItems = [
     { path: '/dashboard', name: 'Dashboard', icon: 'dashboard' },
-    { path: '/opcion1', name: 'Opción 1', icon: 'point_of_sale' },
-    { path: '/opcion2', name: 'Opción 2', icon: 'inventory' },
-    { path: '/opcion3', name: 'Opción 3', icon: 'groups' },
-    { path: '/opcion4', name: 'Opción 4', icon: 'account_balance' },
-    { path: '/opcion5', name: 'Opción 5', icon: 'settings' },
-    { path: '/opcion6', name: 'Opción 6', icon: 'campaign' },
+    { path: '/opcion1', name: 'Análisis de Ventas', icon: 'point_of_sale' },
+    { path: '/opcion2', name: 'Gestión de Inventario', icon: 'inventory' },
+    { path: '/opcion3', name: 'Análisis de Clientes', icon: 'groups' },
+    { path: '/opcion4', name: 'Control Financiero', icon: 'account_balance' },
+    { path: '/opcion5', name: 'Productividad Operativa', icon: 'settings' },
+    { path: '/opcion6', name: 'Marketing Digital', icon: 'campaign' },
   ];
 
   const isActive = (path) => location.pathname === path;
@@ -51,11 +51,16 @@ const Sidebar = ({ isAuthenticated, onSignOut, isMobile, isOpen, onClose }) => {
           />
         )}
         <Link className="navbar-brand px-4 py-3 m-0" to="/dashboard" onClick={handleLinkClick}>
-          <div className="d-flex align-items-center">
-            <div className="bg-gradient-dark rounded-circle d-flex align-items-center justify-content-center me-2" style={{width: '32px', height: '32px'}}>
-              <i className="material-symbols-rounded text-white" style={{fontSize: '18px'}}>business</i>
-            </div>
-            <span className="text-dark font-weight-bold">ESCOTEL</span>
+          <div className="d-flex align-items-center justify-content-center">
+            <img 
+              src="/img/logo-escotel.png" 
+              alt="ESCOTEL" 
+              style={{
+                height: isMobile ? '120px' : '40px',
+                maxWidth: '100%',
+                objectFit: 'contain'
+              }}
+            />
           </div>
         </Link>
       </div>
@@ -75,13 +80,16 @@ const Sidebar = ({ isAuthenticated, onSignOut, isMobile, isOpen, onClose }) => {
             </li>
           ))}
           <li className="nav-item mt-3">
-            <h6 className="ps-4 ms-2 text-uppercase text-xs text-dark font-weight-bolder opacity-5">Cuenta</h6>
-          </li>
-          <li className="nav-item">
             <button 
-              className="nav-link text-dark w-100 text-start border-0 bg-transparent"
+              className="nav-link w-100 text-start border-0 bg-transparent"
               onClick={onSignOut}
-              style={{ cursor: 'pointer' }}
+              style={{ 
+                cursor: 'pointer', 
+                color: '#8B0000',
+                transition: 'color 0.3s ease'
+              }}
+              onMouseEnter={(e) => e.target.style.color = '#dc3545'}
+              onMouseLeave={(e) => e.target.style.color = '#8B0000'}
             >
               <i className="material-symbols-rounded opacity-5">logout</i>
               <span className="nav-link-text ms-1">Cerrar Sesión</span>
