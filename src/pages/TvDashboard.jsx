@@ -1,6 +1,8 @@
 import React from 'react';
 import BarChart from '../components/BarChart';
 import AreaChart from '../components/AreaChart';
+import ServiciosChart from '../components/ServiciosChart';
+import DatosGeneralesChart from '../components/DatosGeneralesChart';
 
 const TvDashboard = () => {
   const weeklyData = {
@@ -79,83 +81,47 @@ const TvDashboard = () => {
   ];
 
   return (
-    <div className="tv-dashboard">
-      <div className="container-fluid py-4">
-        <div className="row">
-          {/* Primer gráfico de área - Servicios */}
-          <div className="col-lg-4 col-md-6 mb-4">
-            <div className="card shadow-lg" style={{ borderRadius: '16px' }}>
-              <div className="card-header pb-3 pt-4 px-4" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0' }}>
-                <div className="row align-items-center">
-                  <div className="col-12">
-                    <h5 className="mb-1">Servicios</h5>
-                    <p className="text-sm mb-0">
-                      {/* <i className="fa fa-check" aria-hidden="true" style={{ color: '#8B0000' }}></i>
-                      <span className="font-weight-bold ms-1">Vista por día</span> */}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="card-body p-4">
-                <AreaChart 
-                  data={serviciosAreaData}
-                  title=""
-                  height={300}
-                />
-              </div>
-            </div>
+    <div className="tv-dashboard" style={{ height: '100vh', overflow: 'hidden' }}>
+      <div className="container-fluid" style={{ height: '100%', padding: '15px' }}>
+        <div className="row h-100">
+          {/* Primer gráfico - Servicios API (Real Data) */}
+          <div className="col-lg-4 col-md-6 mb-3" style={{ height: '48vh' }}>
+            <ServiciosChart />
           </div>
 
-          {/* Segundo gráfico de área - Costos */}
-          <div className="col-lg-4 col-md-6 mb-4">
-            <div className="card shadow-lg" style={{ borderRadius: '16px' }}>
-              <div className="card-header pb-3 pt-4 px-4" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0' }}>
-                <div className="row align-items-center">
-                  <div className="col-12">
-                    <h5 className="mb-1">Costos</h5>
-                    <p className="text-sm mb-0">
-                      {/* <i className="fa fa-check" aria-hidden="true" style={{ color: '#8B0000' }}></i>
-                      <span className="font-weight-bold ms-1">Vista por día</span> */}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="card-body p-4">
-                <AreaChart 
-                  data={costosAreaData}
-                  title=""
-                  height={300}
-                />
-              </div>
-            </div>
+          {/* Segundo gráfico - Datos Generales API (Real Data) */}
+          <div className="col-lg-4 col-md-6 mb-3" style={{ height: '48vh' }}>
+            <DatosGeneralesChart />
           </div>
 
           {/* Gráficos de barras restantes */}
           {chartData.map((data, index) => (
-            <div key={index} className="col-lg-4 col-md-6 mb-4">
-              <div className="card shadow-lg" style={{ borderRadius: '16px' }}>
-                <div className="card-header pb-3 pt-4 px-4" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0' }}>
+            <div key={index} className="col-lg-4 col-md-6 mb-3" style={{ height: '48vh' }}>
+              <div className="card shadow-lg h-100" style={{ borderRadius: '16px' }}>
+                <div className="card-header pb-1 pt-3 px-4" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0' }}>
                   <div className="row align-items-center">
                     <div className="col-12">
                       <h5 className="mb-1">{data.title}</h5>
                       <p className="text-sm mb-0">
-                        {/* <i className="fa fa-check" aria-hidden="true" style={{ color: '#8B0000' }}></i>
-                        <span className="font-weight-bold ms-1">Vista por día</span> */}
+                        <i className="fa fa-chart-bar" aria-hidden="true" style={{ color: '#8B0000' }}></i>
+                        <span className="font-weight-bold ms-1">Datos Mock</span>
                       </p>
                     </div>
                   </div>
                 </div>
-                <div className="card-body p-4">
-                  <BarChart 
-                    data={{
-                      labels: weeklyData.labels,
-                      values: data.values
-                    }}
-                    title=""
-                    height={300}
-                    type="weekly"
-                    color={data.color}
-                  />
+                <div className="card-body" style={{ padding: '0 1rem 1rem 1rem' }}>
+                  <div style={{ height: '300px', width: '100%', marginTop: '-25px' }}>
+                    <BarChart 
+                      data={{
+                        labels: weeklyData.labels,
+                        values: data.values
+                      }}
+                      title=""
+                      height={325}
+                      type="weekly"
+                      color={data.color}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
