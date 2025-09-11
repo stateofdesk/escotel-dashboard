@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useOutletContext } fr
 import Layout from './components/Layout';
 import SignIn from './pages/SignIn';
 import Dashboard from './pages/Dashboard';
+import TvDashboard from './pages/TvDashboard';
 import Opcion1 from './pages/options/Opcion1';
 import Opcion2 from './pages/options/Opcion2';
 import Opcion3 from './pages/options/Opcion3';
@@ -95,6 +96,7 @@ function App() {
             } 
           />
         </Route>
+        <Route path="/tv" element={<TvDashboard />} />
       </Routes>
     </Router>
   );
