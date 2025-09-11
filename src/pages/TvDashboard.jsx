@@ -90,8 +90,8 @@ const TvDashboard = () => {
                   <div className="col-12">
                     <h5 className="mb-1">Servicios</h5>
                     <p className="text-sm mb-0">
-                      <i className="fa fa-check" aria-hidden="true" style={{ color: '#8B0000' }}></i>
-                      <span className="font-weight-bold ms-1">Vista por día</span>
+                      {/* <i className="fa fa-check" aria-hidden="true" style={{ color: '#8B0000' }}></i>
+                      <span className="font-weight-bold ms-1">Vista por día</span> */}
                     </p>
                   </div>
                 </div>
@@ -114,8 +114,8 @@ const TvDashboard = () => {
                   <div className="col-12">
                     <h5 className="mb-1">Costos</h5>
                     <p className="text-sm mb-0">
-                      <i className="fa fa-check" aria-hidden="true" style={{ color: '#8B0000' }}></i>
-                      <span className="font-weight-bold ms-1">Vista por día</span>
+                      {/* <i className="fa fa-check" aria-hidden="true" style={{ color: '#8B0000' }}></i>
+                      <span className="font-weight-bold ms-1">Vista por día</span> */}
                     </p>
                   </div>
                 </div>
@@ -139,8 +139,8 @@ const TvDashboard = () => {
                     <div className="col-12">
                       <h5 className="mb-1">{data.title}</h5>
                       <p className="text-sm mb-0">
-                        <i className="fa fa-check" aria-hidden="true" style={{ color: '#8B0000' }}></i>
-                        <span className="font-weight-bold ms-1">Vista por día</span>
+                        {/* <i className="fa fa-check" aria-hidden="true" style={{ color: '#8B0000' }}></i>
+                        <span className="font-weight-bold ms-1">Vista por día</span> */}
                       </p>
                     </div>
                   </div>
