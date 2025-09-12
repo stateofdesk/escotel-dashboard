@@ -61,15 +61,11 @@ const CanceladosChart = () => {
 
   if (loading) {
     return (
-      <div className="card shadow-lg" style={{ borderRadius: '16px' }}>
-        <div className="card-header pb-3 pt-4 px-4" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0' }}>
-          <h5 className="mb-1">Cancelados con Costo</h5>
-          <p className="text-sm mb-0">
-            <i className="fa fa-spinner fa-spin" style={{ color: '#8B0000' }}></i>
-            <span className="font-weight-bold ms-1">Cargando datos...</span>
-          </p>
+      <div className="card shadow-lg h-100" style={{ borderRadius: '16px' }}>
+        <div className="card-header d-flex justify-content-center align-items-center" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0', height: '60px' }}>
+          <h5 className="mb-0 text-center">Cancelados con Costo</h5>
         </div>
-        <div className="card-body p-4 d-flex justify-content-center align-items-center" style={{ height: '250px' }}>
+        <div className="card-body d-flex justify-content-center align-items-center" style={{ padding: '0 1rem 1rem 1rem', flex: 1 }}>
           <div className="spinner-border text-dark" role="status">
             <span className="visually-hidden">Cargando...</span>
           </div>
@@ -80,15 +76,11 @@ const CanceladosChart = () => {
 
   if (error) {
     return (
-      <div className="card shadow-lg" style={{ borderRadius: '16px' }}>
-        <div className="card-header pb-3 pt-4 px-4" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0' }}>
-          <h5 className="mb-1">Cancelados con Costo</h5>
-          <p className="text-sm mb-0">
-            <i className="fa fa-exclamation-triangle" style={{ color: '#dc3545' }}></i>
-            <span className="font-weight-bold ms-1">Error de conexión</span>
-          </p>
+      <div className="card shadow-lg h-100" style={{ borderRadius: '16px' }}>
+        <div className="card-header d-flex justify-content-center align-items-center" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0', height: '60px' }}>
+          <h5 className="mb-0 text-center">Cancelados con Costo</h5>
         </div>
-        <div className="card-body p-4 d-flex justify-content-center align-items-center" style={{ height: '250px' }}>
+        <div className="card-body d-flex justify-content-center align-items-center" style={{ padding: '0 1rem 1rem 1rem', flex: 1 }}>
           <div className="text-center">
             <i className="fa fa-wifi text-danger mb-2" style={{ fontSize: '2rem' }}></i>
             <p className="text-muted">{error}</p>
