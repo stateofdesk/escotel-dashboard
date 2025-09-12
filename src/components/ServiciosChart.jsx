@@ -94,19 +94,15 @@ const ServiciosChart = () => {
 
   return (
     <div className="card shadow-lg h-100" style={{ borderRadius: '16px' }}>
-      <div className="card-header pb-1 pt-3 px-4" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0' }}>
-        <div className="row align-items-center">
-          <div className="col-12 text-center">
-            <h5 className="mb-0">Servicios</h5>
-          </div>
-        </div>
+      <div className="card-header d-flex justify-content-center align-items-center" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0', height: '60px' }}>
+        <h5 className="mb-0 text-center">Servicios</h5>
       </div>
-      <div className="card-body" style={{ padding: '0 1rem 1rem 1rem' }}>
-        <div style={{ height: 'calc(48vh - 120px)', width: '100%', marginTop: '-25px' }}>
+      <div className="card-body d-flex flex-column" style={{ padding: '0 1rem 1rem 1rem', flex: 1 }}>
+        <div style={{ flex: 1, width: '100%', marginTop: '-25px', minHeight: '200px' }}>
           <AreaChart 
             data={data}
             title=""
-            height={'100%'}
+            height="100%"
             type="area"
           />
         </div>

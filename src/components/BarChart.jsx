@@ -85,8 +85,10 @@ const BarChart = ({ data, title, height = 300, type = "monthly", color = "succes
         ticks: {
           color: '#7b809a',
           font: {
-            size: 12,
+            size: 11,
           },
+          maxRotation: 0,
+          minRotation: 0,
         },
       },
     },
