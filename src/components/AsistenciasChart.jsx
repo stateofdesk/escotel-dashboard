@@ -24,20 +24,20 @@ const AsistenciasChart = () => {
             {
               label: 'Asistencias Total',
               data: datosGeneralesData.costoTotal,
-              borderColor: 'rgba(46, 125, 50, 1)',
-              backgroundColor: 'rgba(46, 125, 50, 0.2)',
-            },
-            {
-              label: 'Asistencias Local',
-              data: datosGeneralesData.costoLocal,
               borderColor: 'rgba(76, 175, 80, 1)',
               backgroundColor: 'rgba(76, 175, 80, 0.2)',
             },
             {
+              label: 'Asistencias Local',
+              data: datosGeneralesData.costoLocal,
+              borderColor: 'rgba(255, 152, 0, 1)',
+              backgroundColor: 'rgba(255, 152, 0, 0.2)',
+            },
+            {
               label: 'Asistencias Carretero',
               data: datosGeneralesData.costoCarretero,
-              borderColor: 'rgba(139, 195, 74, 1)',
-              backgroundColor: 'rgba(139, 195, 74, 0.2)',
+              borderColor: 'rgba(233, 30, 99, 1)',
+              backgroundColor: 'rgba(233, 30, 99, 0.2)',
             }
           ]
         };
@@ -70,7 +70,7 @@ const AsistenciasChart = () => {
           </p>
         </div>
         <div className="card-body p-4 d-flex justify-content-center align-items-center" style={{ height: '250px' }}>
-          <div className="spinner-border text-success" role="status">
+          <div className="spinner-border text-warning" role="status">
             <span className="visually-hidden">Cargando...</span>
           </div>
         </div>

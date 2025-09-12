@@ -24,20 +24,20 @@ const TiempoArriboChart = () => {
             {
               label: 'Tiempo Total',
               data: datosGeneralesData.costoTotal,
-              borderColor: 'rgba(251, 140, 0, 1)',
-              backgroundColor: 'rgba(251, 140, 0, 0.2)',
-            },
-            {
-              label: 'Tiempo Local',
-              data: datosGeneralesData.costoLocal,
               borderColor: 'rgba(255, 152, 0, 1)',
               backgroundColor: 'rgba(255, 152, 0, 0.2)',
             },
             {
+              label: 'Tiempo Local',
+              data: datosGeneralesData.costoLocal,
+              borderColor: 'rgba(244, 67, 54, 1)',
+              backgroundColor: 'rgba(244, 67, 54, 0.2)',
+            },
+            {
               label: 'Tiempo Carretero',
               data: datosGeneralesData.costoCarretero,
-              borderColor: 'rgba(255, 193, 7, 1)',
-              backgroundColor: 'rgba(255, 193, 7, 0.2)',
+              borderColor: 'rgba(121, 85, 72, 1)',
+              backgroundColor: 'rgba(121, 85, 72, 0.2)',
             }
           ]
         };
@@ -70,7 +70,7 @@ const TiempoArriboChart = () => {
           </p>
         </div>
         <div className="card-body p-4 d-flex justify-content-center align-items-center" style={{ height: '250px' }}>
-          <div className="spinner-border text-warning" role="status">
+          <div className="spinner-border text-secondary" role="status">
             <span className="visually-hidden">Cargando...</span>
           </div>
         </div>

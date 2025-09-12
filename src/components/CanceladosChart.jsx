@@ -24,20 +24,20 @@ const CanceladosChart = () => {
             {
               label: 'Cancelados Total',
               data: datosGeneralesData.costoTotal,
-              borderColor: 'rgba(244, 67, 53, 1)',
-              backgroundColor: 'rgba(244, 67, 53, 0.2)',
+              borderColor: 'rgba(244, 67, 54, 1)',
+              backgroundColor: 'rgba(244, 67, 54, 0.2)',
             },
             {
               label: 'Cancelados Local',
               data: datosGeneralesData.costoLocal,
-              borderColor: 'rgba(233, 30, 99, 1)',
-              backgroundColor: 'rgba(233, 30, 99, 0.2)',
+              borderColor: 'rgba(96, 125, 139, 1)',
+              backgroundColor: 'rgba(96, 125, 139, 0.2)',
             },
             {
               label: 'Cancelados Carretero',
               data: datosGeneralesData.costoCarretero,
-              borderColor: 'rgba(255, 87, 34, 1)',
-              backgroundColor: 'rgba(255, 87, 34, 0.2)',
+              borderColor: 'rgba(139, 69, 19, 1)',
+              backgroundColor: 'rgba(139, 69, 19, 0.2)',
             }
           ]
         };
@@ -70,7 +70,7 @@ const CanceladosChart = () => {
           </p>
         </div>
         <div className="card-body p-4 d-flex justify-content-center align-items-center" style={{ height: '250px' }}>
-          <div className="spinner-border text-danger" role="status">
+          <div className="spinner-border text-dark" role="status">
             <span className="visually-hidden">Cargando...</span>
           </div>
         </div>
