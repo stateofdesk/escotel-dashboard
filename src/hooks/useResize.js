@@ -1,47 +1,38 @@
 import { useState, useEffect } from 'react';
 
-const useResize = () => {
-  const [dimensions, setDimensions] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-    key: 0
-  });
+const useZoomResize = () => {
+  const [zoomKey, setZoomKey] = useState(0);
 
   useEffect(() => {
-    let timeoutId = null;
-    
-    const handleResize = () => {
-      // Debounce para evitar demasiadas actualizaciones
-      if (timeoutId) {
-        clearTimeout(timeoutId);
+    let zoomTimeout = null;
+
+    // Solo detectar zoom mediante wheel + ctrl
+    const handleWheel = (e) => {
+      if (e.ctrlKey) {
+        // Es zoom, regenerar componentes
+        if (zoomTimeout) {
+          clearTimeout(zoomTimeout);
+        }
+        
+        zoomTimeout = setTimeout(() => {
+          setZoomKey(prev => prev + 1);
+        }, 300);
       }
-      
-      timeoutId = setTimeout(() => {
-        setDimensions(prev => ({
-          width: window.innerWidth,
-          height: window.innerHeight,
-          key: prev.key + 1
-        }));
-      }, 150); // 150ms de delay
     };
 
-    // Listener para cambios de tamaño de ventana
-    window.addEventListener('resize', handleResize);
-    
-    // Listener para cambios de orientación (móvil)
-    window.addEventListener('orientationchange', handleResize);
+    // Solo escuchar zoom, no resize normal
+    window.addEventListener('wheel', handleWheel, { passive: true });
     
     // Cleanup
     return () => {
-      window.removeEventListener('resize', handleResize);
-      window.removeEventListener('orientationchange', handleResize);
-      if (timeoutId) {
-        clearTimeout(timeoutId);
+      window.removeEventListener('wheel', handleWheel);
+      if (zoomTimeout) {
+        clearTimeout(zoomTimeout);
       }
     };
   }, []);
 
-  return dimensions;
+  return zoomKey;
 };
 
-export default useResize;
+export default useZoomResize;

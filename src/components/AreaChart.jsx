@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -23,6 +24,35 @@ ChartJS.register(
 );
 
 const AreaChart = ({ data, title, height = 300, type = "area" }) => {
+  const chartRef = useRef(null);
+
+  useEffect(() => {
+    let resizeTimeout = null;
+    
+    const handleResize = () => {
+      if (resizeTimeout) {
+        clearTimeout(resizeTimeout);
+      }
+      
+      resizeTimeout = setTimeout(() => {
+        if (chartRef.current) {
+          chartRef.current.resize();
+        }
+      }, 100);
+    };
+
+    // Solo resize normal, no zoom (el zoom se maneja con keys)
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+      if (resizeTimeout) {
+        clearTimeout(resizeTimeout);
+      }
+    };
+  }, []);
   const chartData = {
     labels: data.labels,
     datasets: data.datasets.map((dataset, index) => ({
@@ -41,9 +71,9 @@ const AreaChart = ({ data, title, height = 300, type = "area" }) => {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
-    resizeDelay: 0,
+    resizeDelay: 50,
     animation: {
-      duration: 300
+      duration: 0
     },
     plugins: {
       legend: {
@@ -103,8 +133,13 @@ const AreaChart = ({ data, title, height = 300, type = "area" }) => {
   };
 
   return (
-    <div style={{ height: height === "100%" ? "100%" : `${height}px`, width: '100%', position: 'relative' }}>
-      <Line data={chartData} options={options} />
+    <div style={{ 
+      height: height === "100%" ? "100%" : `${height}px`, 
+      width: '100%', 
+      position: 'relative',
+      transition: 'all 0.2s ease-out'
+    }}>
+      <Line ref={chartRef} data={chartData} options={options} />
     </div>
   );
 };
