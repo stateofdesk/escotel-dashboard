@@ -63,7 +63,7 @@ const TiempoArriboChart = () => {
     return (
       <div className="card shadow-lg" style={{ borderRadius: '16px' }}>
         <div className="card-header pb-3 pt-4 px-4" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0' }}>
-          <h5 className="mb-1">TiempoArribo</h5>
+          <h5 className="mb-1">Tiempo Arribo</h5>
           <p className="text-sm mb-0">
             <i className="fa fa-spinner fa-spin" style={{ color: '#8B0000' }}></i>
             <span className="font-weight-bold ms-1">Cargando datos...</span>
@@ -82,7 +82,7 @@ const TiempoArriboChart = () => {
     return (
       <div className="card shadow-lg" style={{ borderRadius: '16px' }}>
         <div className="card-header pb-3 pt-4 px-4" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0' }}>
-          <h5 className="mb-1">TiempoArribo</h5>
+          <h5 className="mb-1">Tiempo Arribo</h5>
           <p className="text-sm mb-0">
             <i className="fa fa-exclamation-triangle" style={{ color: '#dc3545' }}></i>
             <span className="font-weight-bold ms-1">Error de conexión</span>
