@@ -13,7 +13,7 @@ const TvDashboard = () => {
   // Todos los componentes ahora usan AreaChart idéntico a DatosGeneralesChart
 
   return (
-    <div className="tv-dashboard" style={{ height: '100vh', overflow: 'hidden' }}>
+    <div className="tv-dashboard" style={{ minHeight: '100vh', overflow: 'auto' }}>
       <div className="container-fluid" style={{ height: '100%', padding: '15px' }}>
         <div className="row h-100">
           {/* Fila superior */}

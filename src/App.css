@@ -43,12 +43,12 @@
 
 .tv-dashboard {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background: #f5f5f5;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .tv-dashboard .container-fluid {
