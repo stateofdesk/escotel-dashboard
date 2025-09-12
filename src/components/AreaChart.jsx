@@ -41,6 +41,10 @@ const AreaChart = ({ data, title, height = 300, type = "area" }) => {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
+    resizeDelay: 0,
+    animation: {
+      duration: 300
+    },
     plugins: {
       legend: {
         display: true,
@@ -99,7 +103,7 @@ const AreaChart = ({ data, title, height = 300, type = "area" }) => {
   };
 
   return (
-    <div style={{ height: height === "100%" ? "100%" : `${height}px`, width: '100%' }}>
+    <div style={{ height: height === "100%" ? "100%" : `${height}px`, width: '100%', position: 'relative' }}>
       <Line data={chartData} options={options} />
     </div>
   );
