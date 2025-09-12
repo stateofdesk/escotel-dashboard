@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import AreaChart from './AreaChart';
-import ApiService from '../services/apiService';
+import ApiService from '../../../services/apiService';
 
 const DatosGeneralesChart = () => {
   const [data, setData] = useState(null);

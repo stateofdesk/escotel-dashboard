@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import TvDashboard from './pages/TvDashboard';
+import TvDashboard from './views/tvdashboard/TvDashboard';
 
 function App() {
   return (

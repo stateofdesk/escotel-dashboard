@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import AreaChart from './AreaChart';
-import ApiService from '../services/apiService';
+import ApiService from '../../../services/apiService';
 
-const AsistenciasChart = () => {
+const CanceladosChart = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -17,27 +17,27 @@ const AsistenciasChart = () => {
         const datosGeneralesData = await ApiService.fetchDatosGenerales(); // Usará día de ayer automáticamente
         const calculatedMetrics = ApiService.calculateMetrics(datosGeneralesData, 'datosGenerales');
         
-        // Preparar datos para AreaChart con colores verdes
+        // Preparar datos para AreaChart con colores rojos
         const chartData = {
           labels: datosGeneralesData.labels,
           datasets: [
             {
-              label: 'Asistencias Total',
+              label: 'Cancelados Total',
               data: datosGeneralesData.costoTotal,
-              borderColor: 'rgba(76, 175, 80, 1)',
-              backgroundColor: 'rgba(76, 175, 80, 0.2)',
+              borderColor: 'rgba(244, 67, 54, 1)',
+              backgroundColor: 'rgba(244, 67, 54, 0.2)',
             },
             {
-              label: 'Asistencias Local',
+              label: 'Cancelados Local',
               data: datosGeneralesData.costoLocal,
-              borderColor: 'rgba(255, 152, 0, 1)',
-              backgroundColor: 'rgba(255, 152, 0, 0.2)',
+              borderColor: 'rgba(96, 125, 139, 1)',
+              backgroundColor: 'rgba(96, 125, 139, 0.2)',
             },
             {
-              label: 'Asistencias Carretero',
+              label: 'Cancelados Carretero',
               data: datosGeneralesData.costoCarretero,
-              borderColor: 'rgba(233, 30, 99, 1)',
-              backgroundColor: 'rgba(233, 30, 99, 0.2)',
+              borderColor: 'rgba(139, 69, 19, 1)',
+              backgroundColor: 'rgba(139, 69, 19, 0.2)',
             }
           ]
         };
@@ -45,8 +45,8 @@ const AsistenciasChart = () => {
         setData(chartData);
         setMetrics(calculatedMetrics);
       } catch (err) {
-        setError('Error al cargar asistencias');
-        console.error('AsistenciasChart error:', err);
+        setError('Error al cargar cancelados');
+        console.error('CanceladosChart error:', err);
       } finally {
         setLoading(false);
       }
@@ -63,10 +63,10 @@ const AsistenciasChart = () => {
     return (
       <div className="card shadow-lg h-100" style={{ borderRadius: '16px' }}>
         <div className="card-header d-flex justify-content-center align-items-center" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0', height: '60px' }}>
-          <h5 className="mb-0 text-center">Asistencias</h5>
+          <h5 className="mb-0 text-center">Cancelados con Costo</h5>
         </div>
         <div className="card-body d-flex justify-content-center align-items-center" style={{ padding: '0 1rem 1rem 1rem', flex: 1 }}>
-          <div className="spinner-border text-warning" role="status">
+          <div className="spinner-border text-dark" role="status">
             <span className="visually-hidden">Cargando...</span>
           </div>
         </div>
@@ -78,7 +78,7 @@ const AsistenciasChart = () => {
     return (
       <div className="card shadow-lg h-100" style={{ borderRadius: '16px' }}>
         <div className="card-header d-flex justify-content-center align-items-center" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0', height: '60px' }}>
-          <h5 className="mb-0 text-center">Asistencias</h5>
+          <h5 className="mb-0 text-center">Cancelados con Costo</h5>
         </div>
         <div className="card-body d-flex justify-content-center align-items-center" style={{ padding: '0 1rem 1rem 1rem', flex: 1 }}>
           <div className="text-center">
@@ -93,7 +93,7 @@ const AsistenciasChart = () => {
   return (
     <div className="card shadow-lg h-100" style={{ borderRadius: '16px' }}>
       <div className="card-header d-flex justify-content-center align-items-center" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0', height: '60px' }}>
-        <h5 className="mb-0 text-center">Asistencias</h5>
+        <h5 className="mb-0 text-center">Cancelados con Costo</h5>
       </div>
       <div className="card-body d-flex flex-column" style={{ padding: '0 1rem 1rem 1rem', flex: 1 }}>
         <div style={{ flex: 1, width: '100%', marginTop: '-25px', minHeight: '200px' }}>
@@ -109,4 +109,4 @@ const AsistenciasChart = () => {
   );
 };
 
-export default AsistenciasChart;
+export default CanceladosChart;

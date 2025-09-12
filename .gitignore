@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 
 context
+.claude
+.mcp.json

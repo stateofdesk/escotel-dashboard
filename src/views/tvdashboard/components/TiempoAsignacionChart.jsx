@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import AreaChart from './AreaChart';
-import ApiService from '../services/apiService';
+import ApiService from '../../../services/apiService';
 
-const ServiciosChart = () => {
+const TiempoAsignacionChart = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -14,24 +14,30 @@ const ServiciosChart = () => {
         setLoading(true);
         setError(null);
         
-        const serviciosData = await ApiService.fetchServicios(); // Usará día de ayer automáticamente
-        const calculatedMetrics = ApiService.calculateMetrics(serviciosData, 'servicios');
+        const datosGeneralesData = await ApiService.fetchDatosGenerales(); // Usará día de ayer automáticamente
+        const calculatedMetrics = ApiService.calculateMetrics(datosGeneralesData, 'datosGenerales');
         
-        // Preparar datos para AreaChart con dos datasets
+        // Preparar datos para AreaChart con colores azules
         const chartData = {
-          labels: serviciosData.labels,
+          labels: datosGeneralesData.labels,
           datasets: [
             {
-              label: 'Costos ($)',
-              data: serviciosData.costos,
-              borderColor: 'rgba(255, 99, 132, 1)',
-              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              label: 'Tiempo Total',
+              data: datosGeneralesData.costoTotal,
+              borderColor: 'rgba(33, 150, 243, 1)',
+              backgroundColor: 'rgba(33, 150, 243, 0.2)',
             },
             {
-              label: 'Asistencias',
-              data: serviciosData.asistencias,
-              borderColor: 'rgba(54, 162, 235, 1)',
-              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              label: 'Tiempo Local',
+              data: datosGeneralesData.costoLocal,
+              borderColor: 'rgba(156, 39, 176, 1)',
+              backgroundColor: 'rgba(156, 39, 176, 0.2)',
+            },
+            {
+              label: 'Tiempo Carretero',
+              data: datosGeneralesData.costoCarretero,
+              borderColor: 'rgba(0, 150, 136, 1)',
+              backgroundColor: 'rgba(0, 150, 136, 0.2)',
             }
           ]
         };
@@ -39,8 +45,8 @@ const ServiciosChart = () => {
         setData(chartData);
         setMetrics(calculatedMetrics);
       } catch (err) {
-        setError('Error al cargar datos de servicios');
-        console.error('ServiciosChart error:', err);
+        setError('Error al cargar tiempo asignación');
+        console.error('TiempoAsignacionChart error:', err);
       } finally {
         setLoading(false);
       }
@@ -57,10 +63,10 @@ const ServiciosChart = () => {
     return (
       <div className="card shadow-lg h-100" style={{ borderRadius: '16px' }}>
         <div className="card-header d-flex justify-content-center align-items-center" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0', height: '60px' }}>
-          <h5 className="mb-0 text-center">Servicios</h5>
+          <h5 className="mb-0 text-center">Tiempo Asignación</h5>
         </div>
         <div className="card-body d-flex justify-content-center align-items-center" style={{ padding: '0 1rem 1rem 1rem', flex: 1 }}>
-          <div className="spinner-border text-primary" role="status">
+          <div className="spinner-border text-info" role="status">
             <span className="visually-hidden">Cargando...</span>
           </div>
         </div>
@@ -72,7 +78,7 @@ const ServiciosChart = () => {
     return (
       <div className="card shadow-lg h-100" style={{ borderRadius: '16px' }}>
         <div className="card-header d-flex justify-content-center align-items-center" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0', height: '60px' }}>
-          <h5 className="mb-0 text-center">Servicios</h5>
+          <h5 className="mb-0 text-center">Tiempo Asignación</h5>
         </div>
         <div className="card-body d-flex justify-content-center align-items-center" style={{ padding: '0 1rem 1rem 1rem', flex: 1 }}>
           <div className="text-center">
@@ -87,7 +93,7 @@ const ServiciosChart = () => {
   return (
     <div className="card shadow-lg h-100" style={{ borderRadius: '16px' }}>
       <div className="card-header d-flex justify-content-center align-items-center" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0', height: '60px' }}>
-        <h5 className="mb-0 text-center">Servicios</h5>
+        <h5 className="mb-0 text-center">Tiempo Asignación</h5>
       </div>
       <div className="card-body d-flex flex-column" style={{ padding: '0 1rem 1rem 1rem', flex: 1 }}>
         <div style={{ flex: 1, width: '100%', marginTop: '-25px', minHeight: '200px' }}>
@@ -103,4 +109,4 @@ const ServiciosChart = () => {
   );
 };
 
-export default ServiciosChart;
+export default TiempoAsignacionChart;
