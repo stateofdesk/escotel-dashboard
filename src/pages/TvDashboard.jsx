@@ -110,14 +110,14 @@ const TvDashboard = () => {
                   </div>
                 </div>
                 <div className="card-body" style={{ padding: '0 1rem 1rem 1rem' }}>
-                  <div style={{ height: '300px', width: '100%', marginTop: '-25px' }}>
+                  <div style={{ height: 'calc(48vh - 120px)', width: '100%', marginTop: '-25px' }}>
                     <BarChart 
                       data={{
                         labels: weeklyData.labels,
                         values: data.values
                       }}
                       title=""
-                      height={325}
+                      height={'100%'}
                       type="weekly"
                       color={data.color}
                     />

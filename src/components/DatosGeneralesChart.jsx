@@ -14,7 +14,7 @@ const DatosGeneralesChart = () => {
         setLoading(true);
         setError(null);
         
-        const datosGeneralesData = await ApiService.fetchDatosGenerales();
+        const datosGeneralesData = await ApiService.fetchDatosGenerales(); // Usará día de ayer automáticamente
         const calculatedMetrics = ApiService.calculateMetrics(datosGeneralesData, 'datosGenerales');
         
         // Preparar datos para AreaChart con costos (áreas) y servicios (contador)
@@ -102,46 +102,17 @@ const DatosGeneralesChart = () => {
     <div className="card shadow-lg h-100" style={{ borderRadius: '16px' }}>
       <div className="card-header pb-1 pt-3 px-4" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0' }}>
         <div className="row align-items-center">
-          <div className="col-6">
-            <h5 className="mb-1">Datos Generales</h5>
-            <p className="text-sm mb-0">
-              <i className="fa fa-dollar-sign" aria-hidden="true" style={{ color: '#28a745' }}></i>
-              <span className="font-weight-bold ms-1">Costos por Tipo</span>
-            </p>
-          </div>
-          <div className="col-6">
-            <div className="row text-center">
-              <div className="col-4">
-                <small style={{ color: 'rgba(153, 102, 255, 1)' }}>
-                  <strong>Total</strong><br/>
-                  <span style={{ fontSize: '0.9rem' }}>${(metrics.totalCosto || 0).toLocaleString()}</span><br/>
-                  <span style={{ fontSize: '0.8rem' }}>{(metrics.totalServicios || 0).toLocaleString()} serv</span>
-                </small>
-              </div>
-              <div className="col-4">
-                <small style={{ color: 'rgba(75, 192, 192, 1)' }}>
-                  <strong>Local</strong><br/>
-                  <span style={{ fontSize: '0.9rem' }}>${(metrics.costoLocal || 0).toLocaleString()}</span><br/>
-                  <span style={{ fontSize: '0.8rem' }}>{(metrics.totalLocal || 0).toLocaleString()} serv</span>
-                </small>
-              </div>
-              <div className="col-4">
-                <small style={{ color: 'rgba(218, 165, 32, 1)' }}>
-                  <strong>Carretero</strong><br/>
-                  <span style={{ fontSize: '0.9rem' }}>${(metrics.costoCarretero || 0).toLocaleString()}</span><br/>
-                  <span style={{ fontSize: '0.8rem' }}>{(metrics.totalCarretero || 0).toLocaleString()} serv</span>
-                </small>
-              </div>
-            </div>
+          <div className="col-12 text-center">
+            <h5 className="mb-0">Datos Generales</h5>
           </div>
         </div>
       </div>
-      <div className="card-body" style={{ padding: '0 1rem 1rem 1rem' }}>
-        <div style={{ height: '300px', width: '100%', marginTop: '-25px' }}>
+      <div className="card-body d-flex flex-column" style={{ padding: '0 1rem 1rem 1rem', flex: 1 }}>
+        <div style={{ flex: 1, width: '100%', marginTop: '-25px', minHeight: '200px' }}>
           <AreaChart 
             data={data}
             title=""
-            height={325}
+            height="100%"
             type="area"
           />
         </div>

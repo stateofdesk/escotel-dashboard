@@ -1,8 +1,15 @@
 const API_BASE_URL = 'https://dev-sigsa.backend.escotel.mx/api/EstadisticasServicios';
 
 class ApiService {
-  async fetchServicios(fechaInicio = '2025-09-01') {
+  async fetchServicios(fechaInicio = null) {
     try {
+      // Si no se proporciona fecha, usar el día de ayer
+      if (!fechaInicio) {
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        fechaInicio = yesterday.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+      }
+      
       const response = await fetch(`${API_BASE_URL}/Servicios`, {
         method: 'POST',
         headers: {
@@ -23,8 +30,15 @@ class ApiService {
     }
   }
 
-  async fetchDatosGenerales(fechaInicio = '2025-09-01') {
+  async fetchDatosGenerales(fechaInicio = null) {
     try {
+      // Si no se proporciona fecha, usar el día de ayer
+      if (!fechaInicio) {
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        fechaInicio = yesterday.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+      }
+      
       const response = await fetch(`${API_BASE_URL}/DatosGenerales`, {
         method: 'POST',
         headers: {
@@ -105,12 +119,18 @@ class ApiService {
     if (type === 'servicios') {
       const costos = rawData.map(item => item.costos || 0).filter(cost => cost > 0);
       const asistencias = rawData.map(item => item.asistencias || 0);
+      const tiemposAsignacion = rawData.map(item => item.promedioAsignacion || 0);
+      const tiemposArribo = rawData.map(item => item.promedioArribo || 0);
+      const tiemposConclusion = rawData.map(item => item.promedioConclusion || 0);
       
       return {
         totalCostos: costos.reduce((sum, cost) => sum + cost, 0),
         totalAsistencias: asistencias.reduce((sum, assist) => sum + assist, 0),
         promedioCostos: costos.length > 0 ? costos.reduce((sum, cost) => sum + cost, 0) / costos.length : 0,
         promedioAsistencias: asistencias.length > 0 ? asistencias.reduce((sum, assist) => sum + assist, 0) / asistencias.length : 0,
+        promedioAsignacion: tiemposAsignacion.length > 0 ? tiemposAsignacion.reduce((sum, tiempo) => sum + tiempo, 0) / tiemposAsignacion.length : 0,
+        promedioArribo: tiemposArribo.length > 0 ? tiemposArribo.reduce((sum, tiempo) => sum + tiempo, 0) / tiemposArribo.length : 0,
+        promedioConclusion: tiemposConclusion.length > 0 ? tiemposConclusion.reduce((sum, tiempo) => sum + tiempo, 0) / tiemposConclusion.length : 0,
         maxCostos: Math.max(...costos),
         minCostos: Math.min(...costos.filter(c => c > 0)),
         maxAsistencias: Math.max(...asistencias),

@@ -93,7 +93,7 @@ const BarChart = ({ data, title, height = 300, type = "monthly", color = "succes
   };
 
   return (
-    <div style={{ height: `${height}px`, width: '100%' }}>
+    <div style={{ height: height === "100%" ? "100%" : `${height}px`, width: '100%' }}>
       <Bar data={chartData} options={options} />
     </div>
   );

@@ -14,7 +14,7 @@ const ServiciosChart = () => {
         setLoading(true);
         setError(null);
         
-        const serviciosData = await ApiService.fetchServicios();
+        const serviciosData = await ApiService.fetchServicios(); // Usará día de ayer automáticamente
         const calculatedMetrics = ApiService.calculateMetrics(serviciosData, 'servicios');
         
         // Preparar datos para AreaChart con dos datasets
@@ -29,10 +29,9 @@ const ServiciosChart = () => {
             },
             {
               label: 'Asistencias',
-              data: serviciosData.asistencias.map(val => val * 100), // Escalar para visualización
+              data: serviciosData.asistencias,
               borderColor: 'rgba(54, 162, 235, 1)',
               backgroundColor: 'rgba(54, 162, 235, 0.2)',
-              yAxisID: 'y1',
             }
           ]
         };
@@ -97,27 +96,17 @@ const ServiciosChart = () => {
     <div className="card shadow-lg h-100" style={{ borderRadius: '16px' }}>
       <div className="card-header pb-1 pt-3 px-4" style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #dee2e6', borderRadius: '16px 16px 0 0' }}>
         <div className="row align-items-center">
-          <div className="col-8">
-            <h5 className="mb-1">Análisis de Servicios</h5>
-            <p className="text-sm mb-0">
-              <i className="fa fa-chart-area" aria-hidden="true" style={{ color: '#28a745' }}></i>
-              <span className="font-weight-bold ms-1">Costos y Asistencias</span>
-            </p>
-          </div>
-          <div className="col-4 text-end">
-            <small className="text-muted">
-              <div><strong>${(metrics.totalCostos || 0).toLocaleString()}</strong> suma total</div>
-              <div><strong>{Math.round(metrics.totalAsistencias || 0)}</strong> conteo asistencias</div>
-            </small>
+          <div className="col-12 text-center">
+            <h5 className="mb-0">Servicios</h5>
           </div>
         </div>
       </div>
       <div className="card-body" style={{ padding: '0 1rem 1rem 1rem' }}>
-        <div style={{ height: '300px', width: '100%', marginTop: '-25px' }}>
+        <div style={{ height: 'calc(48vh - 120px)', width: '100%', marginTop: '-25px' }}>
           <AreaChart 
             data={data}
             title=""
-            height={325}
+            height={'100%'}
             type="area"
           />
         </div>

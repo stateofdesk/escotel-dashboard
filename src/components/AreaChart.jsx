@@ -99,7 +99,7 @@ const AreaChart = ({ data, title, height = 300, type = "area" }) => {
   };
 
   return (
-    <div style={{ height: `${height}px`, width: '100%' }}>
+    <div style={{ height: height === "100%" ? "100%" : `${height}px`, width: '100%' }}>
       <Line data={chartData} options={options} />
     </div>
   );

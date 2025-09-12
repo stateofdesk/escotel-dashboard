@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//root/.claude/**)",
+      "WebFetch(domain:scottspence.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:stackoverflow.com)",
+      "WebSearch"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "enabledMcpjsonServers": [
+    "browsermcp",
+    "filesystem"
+  ]
+}
