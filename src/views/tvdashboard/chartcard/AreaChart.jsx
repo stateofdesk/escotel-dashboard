@@ -41,7 +41,7 @@ const AreaChart = ({ data, title, height = 300, type = "area" }) => {
       }, 100);
     };
 
-    // Solo resize normal, no zoom (el zoom se maneja con keys)
+    // resize normal, zoom se maneja con keys
     window.addEventListener('resize', handleResize);
     window.addEventListener('orientationchange', handleResize);
 

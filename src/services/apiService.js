@@ -3,11 +3,11 @@ const API_BASE_URL = 'https://dev-sigsa.backend.escotel.mx/api/EstadisticasServi
 class ApiService {
   async fetchServicios(fechaInicio = null) {
     try {
-      // Si no se proporciona fecha, usar el día de ayer
+      // usar ayer si no hay fecha
       if (!fechaInicio) {
         const yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
-        fechaInicio = yesterday.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+        fechaInicio = yesterday.toISOString().split('T')[0];
       }
       
       const response = await fetch(`${API_BASE_URL}/Servicios`, {
@@ -32,11 +32,11 @@ class ApiService {
 
   async fetchDatosGenerales(fechaInicio = null) {
     try {
-      // Si no se proporciona fecha, usar el día de ayer
+      // usar ayer si no hay fecha
       if (!fechaInicio) {
         const yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
-        fechaInicio = yesterday.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+        fechaInicio = yesterday.toISOString().split('T')[0];
       }
       
       const response = await fetch(`${API_BASE_URL}/DatosGenerales`, {
@@ -60,10 +60,10 @@ class ApiService {
   }
 
   processServiciosData(data) {
-    // Ordenar por fecha
+    // ordenar por fecha
     const sortedData = data.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
     
-    // Tomar últimos 10 días o todos si hay menos
+    // últimos 10 días
     const recentData = sortedData.slice(-10);
     
     return {
@@ -85,10 +85,10 @@ class ApiService {
   }
 
   processDatosGeneralesData(data) {
-    // Ordenar por fecha
+    // ordenar por fecha
     const sortedData = data.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
     
-    // Tomar últimos 10 días o todos si hay menos
+    // últimos 10 días
     const recentData = sortedData.slice(-10);
     
     return {
@@ -110,7 +110,7 @@ class ApiService {
     };
   }
 
-  // Métrica calculadas para analytics
+  // métricas para analytics
   calculateMetrics(data, type = 'servicios') {
     if (!data || !data.raw || data.raw.length === 0) return {};
 

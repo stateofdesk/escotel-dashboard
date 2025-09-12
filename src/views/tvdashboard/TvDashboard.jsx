@@ -1,16 +1,15 @@
 import React from 'react';
 import useZoom from '../../hooks/useZoom';
-import ServiciosChart from './components/ServiciosChart';
-import DatosGeneralesChart from './components/DatosGeneralesChart';
-import AsistenciasChart from './components/AsistenciasChart';
-import TiempoAsignacionChart from './components/TiempoAsignacionChart';
-import TiempoArriboChart from './components/TiempoArriboChart';
-import CanceladosChart from './components/CanceladosChart';
+import ServiciosChart from './chartcard/ServiciosChart/ServiciosChart';
+import DatosGeneralesChart from './chartcard/DatosGeneralesChart/DatosGeneralesChart';
+import AsistenciasChart from './chartcard/AsistenciasChart/AsistenciasChart';
+import TiempoAsignacionChart from './chartcard/TiempoAsignacionChart/TiempoAsignacionChart';
+import TiempoArriboChart from './chartcard/TiempoArriboChart/TiempoArriboChart';
+import CanceladosChart from './chartcard/CanceladosChart/CanceladosChart';
 
 const TvDashboard = () => {
   const zoomKey = useZoom();
   
-  // Todos los componentes ahora usan AreaChart idéntico a DatosGeneralesChart
 
   return (
     <div className="tv-dashboard" style={{ minHeight: '100vh', overflow: 'auto' }}>
