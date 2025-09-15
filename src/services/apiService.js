@@ -1,6 +1,55 @@
 const API_BASE_URL = 'https://dev-sigsa.backend.escotel.mx/api/EstadisticasServicios';
+const AUTH_BASE_URL = 'https://dev-sigsa.backend.escotel.mx/api/Auth';
 
 class ApiService {
+  constructor() {
+    this.token = localStorage.getItem('authToken');
+  }
+
+  async authenticate() {
+    try {
+      const response = await fetch(`${AUTH_BASE_URL}/Login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: "gs@aa.com",
+          password: "Mexico68*",
+          app: ""
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Authentication failed! status: ${response.status}`);
+      }
+
+      const responseText = await response.text();
+      try {
+        const data = JSON.parse(responseText);
+        this.token = data.token || data.accessToken || data;
+      } catch {
+        this.token = responseText;
+      }
+
+      localStorage.setItem('authToken', this.token);
+      return this.token;
+    } catch (error) {
+      console.error('Error authenticating:', error);
+      throw error;
+    }
+  }
+
+  async getAuthHeaders() {
+    if (!this.token) {
+      await this.authenticate();
+    }
+
+    return {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    };
+  }
   async fetchServicios(fechaInicio = null) {
     try {
       // usar ayer si no hay fecha
@@ -9,12 +58,11 @@ class ApiService {
         yesterday.setDate(yesterday.getDate() - 1);
         fechaInicio = yesterday.toISOString().split('T')[0];
       }
-      
+
+      const headers = await this.getAuthHeaders();
       const response = await fetch(`${API_BASE_URL}/Servicios`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers,
         body: JSON.stringify({ fechaInicio }),
       });
 
@@ -38,12 +86,11 @@ class ApiService {
         yesterday.setDate(yesterday.getDate() - 1);
         fechaInicio = yesterday.toISOString().split('T')[0];
       }
-      
+
+      const headers = await this.getAuthHeaders();
       const response = await fetch(`${API_BASE_URL}/DatosGenerales`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers,
         body: JSON.stringify({ fechaInicio }),
       });
 
