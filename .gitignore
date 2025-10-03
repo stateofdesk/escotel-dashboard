@@ -23,6 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-context
+docs/
 .claude
 .mcp.json
